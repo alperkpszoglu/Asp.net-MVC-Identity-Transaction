@@ -1,0 +1,53 @@
+﻿@model IdentityExample.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+@Html.ValidationSummary()
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    // returnUrl değerini HttpGet ile tutuyoruz. Daha sonra HttpPost'a gönderilecektir.
+    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+
+    <div class="card bg-light w-50 mx-auto ">
+        <article class="card-body mx-auto " style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Giriş Yap</h4>
+
+            <form>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    @Html.TextBoxFor(i => i.Username, new { @class = "form-control", @placeholder = "Kullanıcı adınızı giriniz" })
+                </div>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    @Html.PasswordFor(i => i.Password, new { @class = "form-control", placeholder = "Şifrenizi giriniz" })
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Giriş Yap</button>
+                </div>
+                <p class="text-center">Hesabınız yok mu? <a href="/Account/Register">Hesap Oluştur</a> </p>
+            </form>
+        </article>
+    </div>
+
+
+}
+
+
+
+
+
+
+
+
+

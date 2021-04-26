@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Anasayfa</h2>
+<hr />
+
+@if (User.Identity.IsAuthenticated)
+{
+    <label>
+       @User.Identity.Name 
+    </label>
+    <br />
+    <a href="/Account/Logout" class="btn btn-danger">Çıkış</a>
+}
+else
+{
+    <a href="/Account/Register" class="btn btn-primary">Kayıt ol</a>
+    <a href="/Account/Login" class="btn btn-success">Giriş</a>
+}
+

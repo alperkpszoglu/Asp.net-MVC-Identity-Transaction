@@ -1,0 +1,73 @@
+﻿@model IdentityExample.Models.RoleEditModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Düzenle</h2>
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="roleName" value="@Model.Role.Name" />
+    <input type="hidden" name="roleId" value="@Model.Role.Id" />
+
+    <div class="card card-body">
+        <div class="card-header">
+            @Model.Role.Name'e Ekle
+        </div>
+        <table class="table table-striped">
+            @if (Model.NonMembers.Count() != 0)
+            {
+                <tr>
+                    <th>Kullanıcı </th>
+                    <th>Rol</th>
+                </tr>
+                foreach (var user in Model.NonMembers)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td><input type="checkbox" name="IdsToAdd" value="@user.Id"/></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2">Bu role eklenebilecek kullanıcı mevcut değil</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+
+    <div class="card card-body">
+        <div class="card-header">
+            @Model.Role.Name'den sil
+        </div>
+        <table class="table table-striped">
+            @if (Model.Members.Count() != 0)
+            {
+                <tr>
+                    <th>Kullanıcı </th>
+                    <th>Rol</th>
+                </tr>
+                foreach (var user in Model.Members)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td><input type="checkbox" name="IdsToDelete" value="@user.Id" /></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2">Bu role eklenmiş kullanıcı mevcut yok</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+
+
+}

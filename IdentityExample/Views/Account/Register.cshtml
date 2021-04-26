@@ -1,0 +1,49 @@
+﻿@model IdentityExample.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+
+@Html.ValidationSummary()
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Hesap Oluştur</h4>
+
+            <form>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    @Html.TextBoxFor(i => i.Username, new { @class = "form-control",@placeholder="Kullanıcı adınız" })
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    @Html.TextBoxFor(i => i.Email, new { @class = "form-control", placeholder = "E-mail adresiniz" })
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    @Html.PasswordFor(i => i.Password, new { @class = "form-control", placeholder = "Şifre oluştur" })
+
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Hesap Oluştur</button>
+                </div>
+                <p class="text-center">Hesabınız var mı? <a href="/Account/Login">Giriş Yap</a> </p>
+            </form>
+        </article>
+    </div>
+
+}
+
+

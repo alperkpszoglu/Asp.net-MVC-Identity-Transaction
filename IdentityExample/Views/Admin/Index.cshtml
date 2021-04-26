@@ -1,0 +1,40 @@
+﻿@using IdentityExample.Identity
+@model IEnumerable<AppUser>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="card">
+    <div class="card-header text-center font-weight-bold">
+        Kullanıcılar
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Kullanıcı Adı</th>
+            <th>Email</th>
+        </tr>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    Hiçbir Kullanıcı Yok
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                </tr>
+            }
+        }
+
+    </table>
+
+</div>
+
