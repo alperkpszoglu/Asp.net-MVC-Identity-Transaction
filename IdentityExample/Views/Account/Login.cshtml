@@ -3,8 +3,15 @@
     ViewBag.Title = "Login";
 }
 
-@Html.ValidationSummary()
 
+@if(!ViewData.ModelState.IsValid)
+{
+    <div class="card alert-warning">
+        @Html.ValidationSummary()
+    </div>
+}
+
+<br />
 
 @using (Html.BeginForm())
 {
@@ -39,7 +46,6 @@
             </form>
         </article>
     </div>
-
 
 }
 
